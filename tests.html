@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="AnchorBirmanizer.js"></script>
+		<style>
+			a {
+				color: #0060c0;
+				border-bottom-color: rgba(0, 96, 192, 0.25);
+
+				text-decoration: underline;
+				}
+			
+			a:visited {
+				color: purple;
+				}
+			
+			a:hover {
+				color: red;
+				}
+			
+			/* birmanized styles for undeline */
+			a, .birmanized-anchor-within-quotes { 
+				text-decoration: underline; 
+				}
+			
+			.birmanized-anchor { text-decoration: none !important;  }
+			
+			/* birmanized styles for border-bottom underline */
+			/* just add ", [selector] .birmanized-anchor-within-quotes" to every rule*/
+			.birmanized-anchor {
+				border-bottom: none;
+				}
+				
+			a, a .birmanized-anchor-within-quotes { 
+				text-decoration: none; 
+				color: #0060c0;
+				border-bottom: 1px solid;
+				border-bottom-color: rgba(0, 96, 192, 0.25);
+				}
+			
+			a:hover, a:hover .birmanized-anchor-within-quotes {
+				color: #d04000;
+				border-bottom-color: rgba(208, 64, 0, 0.25);
+				}
+				
+			a:visited, a:visited .birmanized-anchor-within-quotes {
+				color: #6040a0;
+				border-bottom-color: rgba(96, 64, 160, 0.25);
+				}
+				
+			a:visited:hover, a:visited:hover .birmanized-anchor-within-quotes  {
+				color: rgb(208, 64, 0);
+				border-bottom-color: rgba(208, 64, 0, 0.25);
+				}
+				
+			/* tests */
+			.inside-1, .inside-2 {
+				font-weight: bold;
+				}
+				
+			.inside-3 {
+				font-style: italic;
+				}
+				
+			.vzryvy {
+				margin-top: 3em;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				$(document).birmanizeAnchors();
+				})
+		</script>
+		<h1>
+			AnchorBirmanizer — тесты
+		</h1>
+		<div class="tests test-non-inverted">
+			<div class="test">
+				<a href="foobarbaz-co.com">«Ссылка»</a> и текст рядом.
+			</div>
+			<div class="test">
+				«<a href="foobarbaz-co.com">„Ссылка в двойных кавычках“</a> и текст рядом.
+			</div>
+			<div class="test">
+				«<a href="foobarbaz-co.com">„Ссылка в лапках“</a> и текст рядом с кавычкой», — проверим и это.
+			</div>
+			<div class="test">
+				Проверим и <a href="foobarbaz-co.com">«самый простой вариант»</a> расположения ссылки.
+			</div>
+			<div class="test">
+				Вариант <a href="foobarbaz-co.com"><span class="garbage"></span>«<span class="garbage"></span>с пустыми элементами внутри<span class="garbage"></span>»<span class="garbage"></span></a> ссылки.
+			</div>
+			<div class="test">
+				Простые ссылки <a href="foobarbaz-co.com">оставляем</a> в покое
+			</div>
+			<div class="test">
+				Даже если в них есть <a href="foobarbaz-co.com">так называемые «кавычки», с которыми мы и работаем</a>.
+			</div>
+			<div class="test">
+				Давайте проверим и скобочки (<a href="foobarbaz-co.com">им тоже нужна бирманизация</a>) — красота.
+			</div>
+		</div>
+		<h2>Инвертированные ссылки («&lt;a&gt;foo&lt/a&gt»)</h2>
+		<div class="tests test-inverted">
+			<div class="test">
+				Вариант: «<a class="target" href="foobarbaz-co.com">ссылка внутри кавычек</a>» — работает?
+			</div>
+			<div class="test">
+				<span>Еще вариант: «</span><a class="target" href="foobarbaz-co.com">спан до кавычки</a>» — тоже работает?
+			</div>
+			<div class="test test-around">
+				С <span class="around-quote">«</span><a class="target" href="foobarbaz-co.com">спанами вокруг кавычек</a><span>»</span>
+			</div>
+		</div>
+		<h2>Спаны вокруг кавычек</h2>
+		<div class="tests tests-around-quotes">
+			<div class="test">
+				С <a class="target" href="foobarbaz-co.com"><span class="around-quote">«</span>спаном вокруг первой кавычки»</a>
+			</div>
+			<div class="test">
+				С <a class="target" href="foobarbaz-co.com">«спаном вокруг последней кавычки<span class="around-quote">»</span></a>
+			</div>
+		</div>
+		<h2>Спаны внутри ссылки</h2>
+		<div class="tests tests-within">
+			<div class="test test-tags-within">
+				Без «<a class="target" href="foobarbaz-co.com">спанов <span class="inside-1">вокруг <span class="inside-3">кавычек</span></span> и со <span class="inside-2">спанами</span> внутри</a>»
+			</div>
+			<div class="test test-quote-within">
+				А вот <a href="foobarbaz-co.com"><span></span>«с кавычкой в спане (<span style="font-weight: bold">«</span>) и даже в скобках»</a>.
+			</div>
+		</div>
+		<div class="test" data-test="7">
+			Посещенная <a href="http://www.google.com">«ссылка»</a>.
+		</div>
+		<h2>Игнорируемые варианты</h2>
+		<div class="tests-failed">
+			<div class="test test-failed">
+				Не спаренные <a href="foobarbaz-co.com">«кавычки“</a> в ссылке.
+			</div>
+			<div class="test test-failed">
+				Не работающий вариант <a href="foobarbaz-co.com"><span data-garbage="«" class="garbage"></span>«<span class="garbage"></span>с элементами внутри»<span class="garbage"></span></a> ссылки с кавычками в атрибутах.
+			</div>
+			<div class="test test-failed test-failed_quote-in-span-with-something-else">
+				Еще не работающий вариант: <a href="foobarbaz-co.com"><span class="garbage">«открывающая кавычка</span> внутри спана с чем-то, кроме кавычки»</a>.
+			</div>
+			<div class="test test-failed test-failed_quote-in-span-with-something-else">
+				Еще не работающий вариант: <a href="foobarbaz-co.com">«закрывающая кавычка внутри спана с чем-то, кроме <span class="garbage">кавычки»</span></a>.
+			</div>
+		</div>
+		
+	<div class="vzryvy">
+		<hr/>
+		Сделано <a href="http://vzryvy.ru">во «Взрывах»</a> (жалко, тут скрипт не пригодился)
+	</div>
+	</body>
+</html>
