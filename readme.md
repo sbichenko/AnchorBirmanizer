@@ -8,6 +8,8 @@ jQuery-плагин для «бирманизации» ссылок.
 
 [Демо](http://vzryvy.ru/AnchorBirmanizer/)
 
+[Вопросы и предложения](http://langsam.ru/ris/post/2397)
+
 
 ## Протестированные браузеры ##
 
