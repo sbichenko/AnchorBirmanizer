@@ -126,6 +126,11 @@ classesIgnored        : []
 5. Если для подчеркивания ссылок используется `text-decoration: underline`, то скрипт сможет создать и вставить нужные стили. Для подчеркивания с помощью `border-bottom` легко сделать новые стили.
 
 
+## Гем для Ruby On Rails ##
+
+https://github.com/somu/birmanizer
+
+
 ## Лицензии ##
 
 http://www.opensource.org/licenses/mit-license.php
