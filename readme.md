@@ -128,11 +128,9 @@ classesIgnored        : []
 
 ## Гем для Ruby On Rails ##
 
-https://github.com/somu/birmanizer
-
+https://rubygems.org/gems/birmanizer
 
 ## Лицензии ##
 
 http://www.opensource.org/licenses/mit-license.php
-
 http://www.gnu.org/licenses/gpl.html
